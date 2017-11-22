@@ -84,9 +84,11 @@ RowLayout {
       RowLayout {
          Label {
            text: "Piece"
+           color: "#cccccc"
          }
          TextInput {
            text: "..."
+           color: "#cccccc"
          }
       }
     }
