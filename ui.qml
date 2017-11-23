@@ -30,7 +30,6 @@ RowLayout {
             cd.color = "#333333"
             nav.current.color = "#36435b"
             nav.current = cd
-            console.log("goat!")
           }
         }
 
@@ -101,14 +100,25 @@ RowLayout {
           clip: true
 
           TextInput {
-            text: "lkj"
+            text: ""
             color: "#cccccc"
             width: parent.width - 40
             y: (parent.height - height) / 2
             x: 20
 
             onTextChanged: {
+
               console.log("search string ",text)
+
+              var req = new XMLHttpRequest();
+              req.open("GET", "https://opus47.io/pieces/search?text="+text);
+              req.onreadystatechange = function() {
+                if(req.readyState == XMLHttpRequest.DONE) {
+                  console.log("search response", req.statusText)
+                }
+              }
+              req.send();
+
             }
           }
         }
