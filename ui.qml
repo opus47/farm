@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 
@@ -30,6 +30,7 @@ RowLayout {
             cd.color = "#333333"
             nav.current.color = "#36435b"
             nav.current = cd
+            console.log("goat!")
           }
         }
 
@@ -79,17 +80,38 @@ RowLayout {
 
     ColumnLayout {
       id: frm
-      spacing: 0
+      spacing: 10
+      width: parent.width - 20
+      x: 10
+      y: 20
 
       RowLayout {
+        spacing: 10
          Label {
            text: "Piece"
            color: "#cccccc"
          }
-         TextInput {
-           text: "..."
-           color: "#cccccc"
-         }
+         Rectangle {
+          Layout.fillWidth: true
+          Layout.minimumHeight: 40
+          Layout.minimumWidth: 500
+          border.width: 2
+          color: "#333"
+          border.color: "#cccccc"
+          clip: true
+
+          TextInput {
+            text: "lkj"
+            color: "#cccccc"
+            width: parent.width - 40
+            y: (parent.height - height) / 2
+            x: 20
+
+            onTextChanged: {
+              console.log("search string ",text)
+            }
+          }
+        }
       }
     }
   }
