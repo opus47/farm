@@ -111,12 +111,13 @@ RowLayout {
               console.log("search string ",text)
 
               var req = new XMLHttpRequest();
-              req.open("GET", "https://opus47.io/pieces/search?text="+text);
               req.onreadystatechange = function() {
+
                 if(req.readyState == XMLHttpRequest.DONE) {
                   console.log("search response", req.statusText)
                 }
               }
+              req.open("GET", "https://opus47.io/pieces/search?text="+text);
               req.send();
 
             }

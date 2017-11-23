@@ -1,2 +1,7 @@
 *.sw*
 *.qmlc
+.qmake.stash
+obj
+*.o
+*.qrc
+qrc_qmake*
