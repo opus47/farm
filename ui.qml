@@ -115,7 +115,10 @@ RowLayout {
               req.onreadystatechange = function() {
 
                 if(req.readyState == XMLHttpRequest.DONE) {
-                  console.log("search response", req.response)
+                  var js = JSON.parse(req.response);
+                  js.forEach(function(x) {
+                    console.log("Title: ", x.title);
+                  })
                 }
               }
               req.open("GET", "https://opus47.io/pieces/search?text="+etext);
