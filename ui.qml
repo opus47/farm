@@ -108,16 +108,17 @@ RowLayout {
 
             onTextChanged: {
 
-              console.log("search string ",text)
+              var etext = encodeURI(text);
+              console.log("search string ", text)
 
               var req = new XMLHttpRequest();
               req.onreadystatechange = function() {
 
                 if(req.readyState == XMLHttpRequest.DONE) {
-                  console.log("search response", req.statusText)
+                  console.log("search response", req.response)
                 }
               }
-              req.open("GET", "https://opus47.io/pieces/search?text="+text);
+              req.open("GET", "https://opus47.io/pieces/search?text="+etext);
               req.send();
 
             }
