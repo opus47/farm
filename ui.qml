@@ -117,7 +117,11 @@ RowLayout {
                 if(req.readyState == XMLHttpRequest.DONE) {
                   var js = JSON.parse(req.response);
                   js.forEach(function(x) {
+                    //console.log(JSON.stringify(x));
+                    console.log("~");
+                    console.log("Composer: ", x.composer);
                     console.log("Title: ", x.title);
+                    console.log("Key: ", x.key);
                   })
                 }
               }
