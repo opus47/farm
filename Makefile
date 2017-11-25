@@ -440,6 +440,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qmake_qmake_immediate.cpp
 qrc_qmake_qmake_immediate.cpp: qmake_qmake_immediate.qrc \
 		/usr/lib64/qt5/bin/rcc \
+		PieceTile.qml \
 		ui.qml \
 		img/cd.png \
 		img/cleff.png

@@ -7,6 +7,7 @@ SOURCES += main.cpp
 
 RESOURCES += \
   ui.qml \
+  PieceTile.qml \
   img/cd.png \
   img/cleff.png
 

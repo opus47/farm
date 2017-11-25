@@ -2,6 +2,7 @@ import QtQuick 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 
+
 RowLayout {
   id: layout
   anchors.fill: parent
@@ -56,7 +57,7 @@ RowLayout {
             nav.current = score
           }
         }
-        
+
         Image {
           source: "img/cleff.png"
           height: 65
@@ -81,57 +82,106 @@ RowLayout {
       id: frm
       spacing: 10
       width: parent.width - 20
+      height: parent.height - 30
       x: 10
       y: 20
 
       RowLayout {
         spacing: 10
-         Label {
-           text: "Piece"
-           color: "#cccccc"
-         }
-         Rectangle {
+        Label {
+          text: "Piece"
+          color: "#cccccc"
+        }
+        ColumnLayout {
           Layout.fillWidth: true
           Layout.minimumHeight: 40
           Layout.minimumWidth: 500
-          border.width: 2
-          color: "#333"
-          border.color: "#cccccc"
-          clip: true
+          Rectangle {
+            width: parent.width
+            height: parent.height
+            border.width: 2
+            color: "#333"
+            border.color: "#cccccc"
+            clip: true
 
-          TextInput {
-            text: ""
-            color: "#cccccc"
-            width: parent.width - 40
-            y: (parent.height - height) / 2
-            x: 20
+            TextInput {
+              text: ""
+              color: "#cccccc"
+              width: parent.width - 40
+              y: (parent.height - height) / 2
+              x: 20
 
-            onTextChanged: {
+              onTextChanged: {
 
-              var etext = encodeURI(text);
-              console.log("search string ", text)
+                var etext = encodeURI(text);
+                console.log("search string ", text)
 
-              var req = new XMLHttpRequest();
-              req.onreadystatechange = function() {
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function() {
+                pieceFlow.children = "";
 
-                if(req.readyState == XMLHttpRequest.DONE) {
-                  var js = JSON.parse(req.response);
-                  js.forEach(function(x) {
-                    //console.log(JSON.stringify(x));
-                    console.log("~");
-                    console.log("Composer: ", x.composer);
-                    console.log("Title: ", x.title);
-                    console.log("Key: ", x.key);
-                  })
+                  if(req.readyState == XMLHttpRequest.DONE) {
+                    var js = JSON.parse(req.response);
+                    js.forEach(function(x) {
+
+
+                      console.log("~");
+                      console.log("Composer: ", x.composer);
+                      console.log("Title: ", x.title);
+                      console.log("Key: ", x.key);
+
+
+                      var tile;
+                      tile = Qt.createComponent("PieceTile.qml");
+                      tile.createObject(pieceFlow, {
+                        composer: x.composer,
+                        title: x.title,
+                        key: x.key,
+                        catalog: x.catalog
+                      });
+                      
+
+
+
+
+                    })
+                  }
                 }
-              }
-              req.open("GET", "https://opus47.io/pieces/search?text="+etext);
-              req.send();
+                req.open("GET", "https://opus47.io/pieces/search?text="+etext);
+                req.send();
 
+              }
             }
           }
         }
       }
+
+      Rectangle {
+        color: "#474747"
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        Flow {
+          id: pieceFlow
+          width: parent.width - 20
+          height: parent.height - 20
+          x: 10
+          y: 10
+          spacing: 10
+          PieceTile {
+            composer: "Ludwig van Beethoven"
+            title: "Kreitzer Sonata"
+            key: "G Flat Minor"
+            catalog: "Opus47"
+          }
+          PieceTile {
+            composer: "Antonin Dvorak"
+            title: "American Quartet"
+            key: "A Major"
+            catalog: "Opus 96"
+          }
+        }
+      }
+
     }
   }
 
