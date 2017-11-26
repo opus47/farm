@@ -34,10 +34,14 @@ Item {
     });
 
     var ctor = Qt.createComponent("PiecePart.qml");
+    var i = 0;
     parts.forEach(function(p) {
       ctor.createObject(pieceParts, {
-        part: p.name
+        id: 'part'+i,
+        part: p.name,
+        'KeyNavigation.tab': 'part'+(i+1)
       });
+      i++;
     });
 
 
@@ -123,6 +127,7 @@ Item {
               clip: true
 
               TextInput {
+                selectByMouse: true
                 text: ""
                 width: parent.width - 40
                 y: (parent.height - height) / 2

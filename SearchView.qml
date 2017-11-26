@@ -35,6 +35,7 @@ Rectangle {
         clip: true
 
         TextInput {
+          selectByMouse: true
           text: ""
           color: "#cccccc"
           width: parent.width - 40

@@ -26,6 +26,9 @@ Item {
       clip: true
 
       TextInput {
+        activeFocusOnTab: true
+        KeyNavigation.priority: KeyNavigation.BeforeItem
+        selectByMouse: true
         id: performerName
         text: ""
         width: parent.width - 40
