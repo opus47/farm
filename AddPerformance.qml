@@ -9,6 +9,7 @@ Item {
   property string key
   property string catalog
   property var movements
+  property var parts
 
   id: addPerf
   
@@ -18,7 +19,6 @@ Item {
 
     movements.forEach(function(m) {
 
-      console.log(JSON.stringify(m));
       var ctor = Qt.createComponent("PieceMovement.qml");
       ctor.createObject(pieceMovements, {
         title: m.title,
@@ -32,6 +32,14 @@ Item {
       });
 
     });
+
+    var ctor = Qt.createComponent("PiecePart.qml");
+    parts.forEach(function(p) {
+      ctor.createObject(pieceParts, {
+        part: p.name
+      });
+    });
+
 
   }
 
@@ -127,33 +135,11 @@ Item {
           ColumnLayout {
             id: pieceMovements
             Layout.fillWidth: true
+          }
 
-            /*
-            PieceMovement {
-              Layout.fillWidth: true
-              num: 1
-              title: "Allegro von ploppo"
-              tracks: [
-                "Track 1",
-                "Track 2",
-                "Track 3",
-                "Track 4"
-              ]
-            }
-
-            PieceMovement {
-              Layout.fillWidth: true
-              num: 2
-              title: "Kersplopo non sancho"
-              tracks: [
-                "Track 1",
-                "Track 2",
-                "Track 3",
-                "Track 4"
-              ]
-            }
-            */
-
+          ColumnLayout {
+            id: pieceParts
+            Layout.fillWidth: true
           }
 
         }

@@ -17,7 +17,7 @@ Item {
       Layout.fillWidth: true
       text: num + ". " + title
       color: "#ccc"
-      font.pixelSize: 18
+      font.pixelSize: 20
     }
 
     ComboBox {

@@ -66,7 +66,8 @@ Item {
               title: js.title,
               key: js.key,
               catalog: js.catalog,
-              movements: js.movements
+              movements: js.movements,
+              parts: js.parts
             }
           );
 

@@ -12,6 +12,7 @@ RESOURCES += \
   SideBar.qml \
   AddPerformance.qml \
   PieceMovement.qml \
+  PiecePart.qml \
   ApiClient.js \
   img/cd.png \
   img/cleff.png
