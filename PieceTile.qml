@@ -2,7 +2,8 @@ import QtQuick 2.4
 import "ApiClient.js" as API
 
 Item {
-  property string composer
+  property string cfirst
+  property string clast
   property string title
   property string key
   property string catalog
@@ -24,7 +25,7 @@ Item {
       height: childrenRect.height + 20
       spacing: 5
       Text {
-        text: composer
+        text: cfirst + ' ' + clast
         color: textColor
         horizontalAlignment: Text.AlignHCenter
         anchors.horizontalCenter: parent.horizontalCenter
@@ -54,10 +55,22 @@ Item {
       }
       onClicked: {
         console.log("piece click: " + id);
-        mainStackView.push( 
-          Qt.resolvedUrl("AddPerformance.qml"), { piece: id } );
 
-        API.getPieceInfo(id);
+        API.getPieceInfo(id, function (js) {
+
+          mainStackView.push( 
+            Qt.resolvedUrl("AddPerformance.qml"), 
+            { 
+              cfirst: js.cfirst,
+              clast: js.clast,
+              title: js.title,
+              key: js.key,
+              catalog: js.catalog,
+              movements: js.movements
+            }
+          );
+
+        });
       }
     }
   }

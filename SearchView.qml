@@ -51,7 +51,8 @@ Rectangle {
                var tile;
                tile = Qt.createComponent("PieceTile.qml");
                tile.createObject(pieceFlow, {
-                 composer: x.composer,
+                 cfirst: x.cfirst,
+                 clast: x.clast,
                  title: x.title,
                  key: x.key,
                  catalog: x.catalog,

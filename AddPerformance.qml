@@ -3,7 +3,13 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 
 Item {
-  property string piece
+  property string cfirst
+  property string clast
+  property string title
+  property string key
+  property string catalog
+  property var movements
+
   id: addPerf
   
   anchors.fill: parent
@@ -54,7 +60,7 @@ Item {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            text: piece
+            text: clast + ": " + title + " in " + key + " ~ " + catalog
             color: "#ccc"
             font.pixelSize: 20
           }

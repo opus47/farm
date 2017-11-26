@@ -44,6 +44,8 @@ function getPieceInfo(id, callback) {
     console.log("get piece info");
     console.log(JSON.stringify(js));
 
+    callback(js);
+
   });
 
 }
