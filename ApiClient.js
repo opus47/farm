@@ -49,3 +49,16 @@ function getPieceInfo(id, callback) {
   });
 
 }
+
+function getMusicians(callback) {
+
+  jrq("GET", "https://opus47.io/musicians", function(js) {
+
+    console.log("get musicians");
+    console.log(JSON.stringify(js));
+
+    callback(js);
+
+  });
+
+}

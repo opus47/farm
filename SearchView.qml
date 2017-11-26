@@ -36,6 +36,7 @@ Rectangle {
 
         TextInput {
           selectByMouse: true
+          selectionColor: "#444"
           text: ""
           color: "#cccccc"
           width: parent.width - 40

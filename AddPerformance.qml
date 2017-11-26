@@ -128,6 +128,7 @@ Item {
 
               TextInput {
                 selectByMouse: true
+                selectionColor: "#444"
                 text: ""
                 width: parent.width - 40
                 y: (parent.height - height) / 2
