@@ -2,6 +2,8 @@ import QtQuick 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
 
+import "ApiClient.js" as API
+
 Item {
   property string cfirst
   property string clast
@@ -17,31 +19,35 @@ Item {
 
   Component.onCompleted: {
 
-    movements.forEach(function(m) {
+    API.getMusicians(function(musicians_) {
+      movements.forEach(function(m) {
 
-      var ctor = Qt.createComponent("PieceMovement.qml");
-      ctor.createObject(pieceMovements, {
-        title: m.title,
-        num: m.number,
-        tracks: [
-          "Track 1",
-          "Track 2",
-          "Track 3",
-          "Track 4"
-        ]
+        var ctor = Qt.createComponent("PieceMovement.qml");
+        ctor.createObject(pieceMovements, {
+          title: m.title,
+          num: m.number,
+          tracks: [
+            "Track 1",
+            "Track 2",
+            "Track 3",
+            "Track 4"
+          ]
+        });
+
       });
 
-    });
-
-    var ctor = Qt.createComponent("PiecePart.qml");
-    var i = 0;
-    parts.forEach(function(p) {
-      ctor.createObject(pieceParts, {
-        id: 'part'+i,
-        part: p.name,
-        'KeyNavigation.tab': 'part'+(i+1)
+      var ctor = Qt.createComponent("PiecePart.qml");
+      var i = 0;
+      parts.forEach(function(p) {
+        ctor.createObject(pieceParts, {
+          id: 'part'+i,
+          part: p.name,
+          musicians: musicians_,
+          'KeyNavigation.tab': 'part'+(i+1)
+        });
+        i++;
       });
-      i++;
+
     });
 
 

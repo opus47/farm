@@ -7,13 +7,14 @@ import "ApiClient.js" as API
 
 Item {
   property string part
+  property var musicians
 
   Layout.minimumHeight: 40
   Layout.fillWidth: true
 
   Component.onCompleted: {
 
-    API.getMusicians(function(musicians) {
+    //API.getMusicians(function(musicians) {
 
       musicians.forEach(function(x) {
         //if there is no middle name, then there is no property ... be defensive
@@ -23,7 +24,7 @@ Item {
         musicianModel.append({ text: x.first + ' ' + x.middle + ' ' + x.last });
       });
 
-    });
+    //});
 
   }
 
