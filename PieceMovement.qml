@@ -9,6 +9,7 @@ Item {
   property var tracks: []
 
   Layout.minimumHeight: 40
+  Layout.fillWidth: true
 
   RowLayout {
     anchors.fill: parent

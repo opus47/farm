@@ -14,6 +14,27 @@ Item {
   
   anchors.fill: parent
 
+  Component.onCompleted: {
+
+    movements.forEach(function(m) {
+
+      console.log(JSON.stringify(m));
+      var ctor = Qt.createComponent("PieceMovement.qml");
+      ctor.createObject(pieceMovements, {
+        title: m.title,
+        num: m.number,
+        tracks: [
+          "Track 1",
+          "Track 2",
+          "Track 3",
+          "Track 4"
+        ]
+      });
+
+    });
+
+  }
+
   Rectangle {
     color: "#333333"
     width: parent.width - 20
@@ -107,6 +128,7 @@ Item {
             id: pieceMovements
             Layout.fillWidth: true
 
+            /*
             PieceMovement {
               Layout.fillWidth: true
               num: 1
@@ -130,6 +152,8 @@ Item {
                 "Track 4"
               ]
             }
+            */
+
           }
 
         }
