@@ -21,7 +21,10 @@ Item {
         if (!('middle' in x)) {
           x['middle'] = ""
         }
-        musicianModel.append({ text: x.first + ' ' + x.middle + ' ' + x.last });
+        musicianModel.append({ 
+          text: x.first + ' ' + x.middle + ' ' + x.last,
+          mid: x.id //use an id so things like spelling error don't creep in
+        });
       });
 
     //});

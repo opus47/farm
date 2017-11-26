@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
 
 import "ApiClient.js" as API
 
@@ -152,6 +153,38 @@ Item {
           ColumnLayout {
             id: pieceParts
             Layout.fillWidth: true
+          }
+
+          Rectangle {
+            activeFocusOnTab: true
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: 120
+            height: 45
+            border.color: "#777"
+            color: "#333"
+            Text {
+              id: harvestText
+              color: "#ccc"
+              text: "Harvest"
+              font.pointSize: 12
+              verticalAlignment: Text.AlignVCenter
+              horizontalAlignment: Text.AlignHCenter
+              anchors.horizontalCenter: parent.horizontalCenter
+              anchors.verticalCenter: parent.verticalCenter
+            }
+            MouseArea {
+              anchors.fill: parent
+              hoverEnabled: true
+              onEntered: {
+                harvestText.color = "#1c5d99";
+              }
+              onExited: {
+                harvestText.color = "#ccc";
+              }
+              onClicked: {
+                console.log('harvest time ....');
+              }
+            }
           }
 
         }
