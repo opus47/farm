@@ -10,6 +10,7 @@ int main(int argc, char **argv) {
   QSslConfiguration::setDefaultConfiguration(config);
 
   QGuiApplication app(argc, argv);
+  app.setApplicationName("Opus47");
   QQuickView view;
   view.setResizeMode(QQuickView::SizeRootObjectToView);
   view.setSource(QUrl("qrc:///ui.qml"));

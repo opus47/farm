@@ -8,6 +8,11 @@ SOURCES += main.cpp
 RESOURCES += \
   ui.qml \
   PieceTile.qml \
+  SearchView.qml \
+  SideBar.qml \
+  AddPerformance.qml \
+  PieceMovement.qml \
+  ApiClient.js \
   img/cd.png \
   img/cleff.png
 

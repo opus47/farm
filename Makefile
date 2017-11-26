@@ -441,7 +441,12 @@ compiler_rcc_clean:
 qrc_qmake_qmake_immediate.cpp: qmake_qmake_immediate.qrc \
 		/usr/lib64/qt5/bin/rcc \
 		PieceTile.qml \
+		SideBar.qml \
+		ApiClient.js \
+		PieceMovement.qml \
 		ui.qml \
+		AddPerformance.qml \
+		SearchView.qml \
 		img/cd.png \
 		img/cleff.png
 	/usr/lib64/qt5/bin/rcc -name qmake_qmake_immediate qmake_qmake_immediate.qrc -o qrc_qmake_qmake_immediate.cpp
